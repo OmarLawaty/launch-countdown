@@ -3,19 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
+    <!-- displays site properly based on user's device -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
-    <title>Frontend Mentor | Launch countdown timer</title>
+    <!-- SEMANTIC UI -->
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+      integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- GOOGLE FONTS -->
+
+    <!-- CSS & JS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/app.js" defer></script>
+
+    <title>Launch countdown timer</title>
   </head>
   <body>
     <h1 class="page-header">We're launching soon</h1>
+
     <div class="timer-container">
-      <div class="timer-items">Days</div>
-      <div class="timer-items">Hours</div>
-      <div class="timer-items">Minutes</div>
-      <div class="timer-items">Seconds</div>
+      <div class="timer-items days"><span class="time-value">0</span> <span class="time-type">Days</span></div>
+      <div class="timer-items hours"><span class="time-value">0</span> <span class="time-type">Hours</span></div>
+      <div class="timer-items minutes"><span class="time-value">0</span> <span class="time-type">Minutes</span></div>
+      <div class="timer-items seconds"><span class="time-value">0</span> <span class="time-type">Seconds</span></div>
     </div>
   </body>
 </html>
