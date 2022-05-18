@@ -30,21 +30,27 @@
     />
 
     <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap" rel="stylesheet" />
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="./css/styles.css" />
     <script src="./js/app.js" defer></script>
 
-    <title>Launch countdown timer</title>
+    <title>Launch countdown</title>
   </head>
   <body>
-    <h1 class="page-header">We're launching soon</h1>
+    <div class="background">
+      <div class="textures">
+        <img src="./images/pattern-hills.svg" alt="hills background" />
+      </div>
+    </div>
 
-    <div class="timer-container">
-      <div class="timer-items days"><span class="time-value">0</span> <span class="time-type">Days</span></div>
-      <div class="timer-items hours"><span class="time-value">0</span> <span class="time-type">Hours</span></div>
-      <div class="timer-items minutes"><span class="time-value">0</span> <span class="time-type">Minutes</span></div>
-      <div class="timer-items seconds"><span class="time-value">0</span> <span class="time-type">Seconds</span></div>
+    <div class="ui container">
+      <h1 class="page-header">We're launching soon</h1>
+
+      <div class="timer-container"></div>
     </div>
   </body>
 </html>
