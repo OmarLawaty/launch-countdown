@@ -1,24 +1,55 @@
-const daysLeft = document.querySelector('.timer-items.days .time-value');
-const hoursLeft = document.querySelector('.timer-items.hours .time-value');
-const minutesLeft = document.querySelector('.timer-items.minutes .time-value');
-const secondsLeft = document.querySelector('.timer-items.seconds .time-value');
+const date = new Date('May 30, 2023 2:17:00').getTime();
 
-const date = new Date('Jul 25, 2022 16:37:52').getTime();
+const timeTypes = [
+  {
+    type: 'Days',
+    value: '0',
+    update: time => Math.floor(time / (1000 * 60 * 60 * 24)),
+    element: new Object()
+  },
+  {
+    type: 'Hours',
+    value: '0',
+    update: time => Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    element: new Object()
+  },
+  {
+    type: 'Minutes',
+    value: '0',
+    update: time => Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)),
+    element: new Object()
+  },
+  {
+    type: 'Seconds',
+    value: '0',
+    update: time => Math.floor((time % (1000 * 60)) / 1000),
+    element: new Object()
+  }
+];
+
+const countdownContainer = document.querySelector('.timer-container');
+const fragment = document.createDocumentFragment();
+
+timeTypes.forEach(({ type, value }, index) => {
+  let timerItems = document.createElement('div');
+  timerItems.classList = `timer-items ${type.toLowerCase()}`;
+  timerItems.innerHTML = `<span class="time-value">${value}</span> <span class="time-type">${type}</span>`;
+
+  timeTypes[index].element = timerItems;
+  fragment.appendChild(timerItems);
+});
+countdownContainer.appendChild(fragment);
 
 const updateTimer = setInterval(() => {
   const now = new Date().getTime();
   let timeLeft = date - now;
 
-  daysLeft.innerHTML = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-  hoursLeft.innerHTML = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  minutesLeft.innerHTML = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  secondsLeft.innerHTML = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  timeTypes.forEach(({ element, update }) => appendTextToElement(element.children[0], update(timeLeft)));
 
-  if (timeLeft < 0) {
+  if (timeLeft <= 0) {
     clearInterval(updateTimer);
-    daysLeft.innerHTML = '0';
-    hoursLeft.innerHTML = '0';
-    minutesLeft.innerHTML = '0';
-    secondsLeft.innerHTML = '0';
+    timeTypes.forEach(({ element, value }) => appendTextToElement(element.children[0], value));
   }
 }, 1000);
+
+const appendTextToElement = (element, text) => (element.innerHTML = text);
