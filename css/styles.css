@@ -118,4 +118,28 @@ body {
           align-items: center;
   background-color: #333;
 }
-/*# sourceMappingURL=styles.css.map */
+
+
+/* ICONS */
+
+.icons {
+       color          : aliceblue;
+       position       : absolute;
+       left           : 46%;
+       top            : 90%;
+       display        : flex;
+       justify-content: space-between;
+       gap            : 17px
+}
+
+
+.icons i {
+  color    :  hsla(0, 0%, 100%, 0.747);
+  font-size: 27px;
+  cursor   : pointer;
+}
+
+
+.icons i:hover {
+  color: aqua;
+}
