@@ -4,26 +4,26 @@ const timeTypes = [
   {
     type: 'Days',
     value: '0',
-    update: time => Math.floor(time / (1000 * 60 * 60 * 24)),
-    element: new Object()
+    element: new Object(),
+    update: time => Math.floor(time / (1000 * 60 * 60 * 24))
   },
   {
     type: 'Hours',
     value: '0',
-    update: time => Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-    element: new Object()
+    element: new Object(),
+    update: time => Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   },
   {
     type: 'Minutes',
     value: '0',
-    update: time => Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)),
-    element: new Object()
+    element: new Object(),
+    update: time => Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))
   },
   {
     type: 'Seconds',
     value: '0',
-    update: time => Math.floor((time % (1000 * 60)) / 1000),
-    element: new Object()
+    element: new Object(),
+    update: time => Math.floor((time % (1000 * 60)) / 1000)
   }
 ];
 
