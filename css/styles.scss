@@ -41,7 +41,31 @@ body {
   margin: 0;
   padding: 0;
 
-  font: 700 14px "Red Hat Text", sans-serif;
+  font: 700 14px 'Red Hat Text', sans-serif;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(180deg, rgba(25, 26, 36, 1) 0%, rgba(38, 30, 47, 1) 100%);
+
+  position: relative;
+
+  .textures {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    width: 100;
+    background: url(../images/bg-stars.svg);
+
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .ui.container {
@@ -66,43 +90,21 @@ body {
   }
 }
 
-.background {
-  width: 100vw;
-  height: 100vh;
-
-  background: linear-gradient(
-    180deg,
-    rgba(25, 26, 36, 1) 0%,
-    rgba(38, 30, 47, 1) 100%
-  );
-
-  position: relative;
-
-  .textures {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    width: 100;
-    background: url(../images/bg-stars.svg);
-
-    display: flex;
-    flex-direction: column-reverse;
-  }
-}
-
 .timer-container {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  width: 48%;
 
   .timer-items {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #333;
+
+    .time-value {
+      color: hsl(345, 95%, 68%);
+      padding: 50px;
+      background-color: black;
+    }
   }
 }
