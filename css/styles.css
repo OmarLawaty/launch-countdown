@@ -40,7 +40,32 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
-  font: 700 14px "Red Hat Text", sans-serif;
+  font: 700 14px 'Red Hat Text', sans-serif;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#261e2f));
+  background: linear-gradient(180deg, #191a24 0%, #261e2f 100%);
+  position: relative;
+}
+
+.background .textures {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  width: 100;
+  background: url(../images/bg-stars.svg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 
 .ui.container {
@@ -70,52 +95,102 @@ body {
   color: white;
 }
 
-.background {
-  width: 100vw;
-  height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#261e2f));
-  background: linear-gradient(180deg, #191a24 0%, #261e2f 100%);
-  position: relative;
-}
-
-.background .textures {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  width: 100;
-  background: url(../images/bg-stars.svg);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-}
-
 .timer-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 10px;
 }
 
 .timer-container .timer-items {
+  width: 100px;
+  height: 100px;
+}
+
+.timer-container .time-value {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: grey;
+}
+
+.timer-container .time-value .next-number,
+.timer-container .time-value .new-values .upper-value,
+.timer-container .time-value .new-values .bottom-value,
+.timer-container .time-value .current-number {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #333;
+  font-size: 32px;
+}
+
+.timer-container .time-value .next-number {
+  -webkit-clip-path: inset(0 0 50% 0);
+          clip-path: inset(0 0 50% 0);
+}
+
+.timer-container .time-value .current-number {
+  -webkit-clip-path: inset(50% 0 0 0);
+          clip-path: inset(50% 0 0 0);
+}
+
+.timer-container .time-value .new-values {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  -webkit-perspective: 40em;
+          perspective: 40em;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: 0ms ease all;
+  transition: 0ms ease all;
+}
+
+.timer-container .time-value .new-values .upper-value,
+.timer-container .time-value .new-values .bottom-value {
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.timer-container .time-value .new-values .upper-value {
+  -webkit-clip-path: inset(0 0 50% 0);
+          clip-path: inset(0 0 50% 0);
+  background-color: darkblue;
+}
+
+.timer-container .time-value .new-values .bottom-value {
+  -webkit-clip-path: inset(50% 0 0 0);
+          clip-path: inset(50% 0 0 0);
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+  background-color: darkgoldenrod;
+}
+
+.timer-container .time-value.flip .new-values {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+  -webkit-transition: 600ms all;
+  transition: 600ms all;
+}
+
+.timer-container .time-type {
+  width: 100%;
+  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */
