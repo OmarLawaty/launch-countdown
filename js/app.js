@@ -1,4 +1,4 @@
-const date = new Date('june 30, 2023 2:24:00').getTime();
+const date = new Date('june 30, 2022 2:16:00').getTime();
 
 const timeTypes = [
   {
@@ -45,6 +45,7 @@ timeTypes.forEach(({ type, value }, index) => {
         <div class="upper-value" >${value}</div>
         <div class="bottom-value" >${value}</div>
       </div>
+    <hr class="split-line">
   </div>
   <div class="time-type">${type}</div>`;
 

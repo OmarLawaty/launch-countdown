@@ -17,6 +17,7 @@ hr,
 p,
 ul,
 li,
+i.icon,
 div,
 section {
   margin: 0;
@@ -88,32 +89,103 @@ body {
 }
 
 .ui.container .page-header {
-  margin: 135px 0;
+  margin: 135px 0 105px;
   text-transform: uppercase;
   letter-spacing: 9px;
   font-size: 21px;
   color: white;
+  font-weight: 700;
 }
 
 .timer-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 47.8%;
+  height: 187px;
+  gap: 30px;
 }
 
 .timer-container .timer-items {
-  width: 100px;
-  height: 100px;
-}
-
-.timer-container .time-value {
+  width: 22%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 5px;
+}
+
+.timer-container .time-type {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.7;
+  letter-spacing: 6px;
+  color: #8486a9;
+}
+
+.timer-container .time-value {
   position: relative;
-  width: 100px;
-  height: 100px;
-  background-color: grey;
+  width: 100%;
+  height: 150px;
+  -webkit-perspective: 300px;
+          perspective: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: #191a24 10px solid;
+  border-radius: 10px;
+  background-color: #191a24;
+}
+
+.timer-container .time-value::after, .timer-container .time-value::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 2px;
+  /* as the half of the width */
+  background-color: #191a24;
+  border: 5px solid #191a24;
+  border-left: 0;
+  z-index: 1;
+}
+
+.timer-container .time-value::after {
+  border-bottom-left-radius: 100px;
+  border-top-left-radius: 100px;
+}
+
+.timer-container .time-value::before {
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 100px;
+}
+
+.timer-container .time-value .split-line {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 0.04em;
+  border: 0;
+  background-color: #1e1f29;
+  opacity: 0.5;
+  top: 50%;
+  left: 0;
 }
 
 .timer-container .time-value .next-number,
@@ -136,7 +208,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 32px;
+  font-size: 78px;
+  color: #fb6087;
+  border-radius: 10px;
 }
 
 .timer-container .time-value .next-number {
@@ -171,7 +245,6 @@ body {
 .timer-container .time-value .new-values .upper-value {
   -webkit-clip-path: inset(0 0 50% 0);
           clip-path: inset(0 0 50% 0);
-  background-color: darkblue;
 }
 
 .timer-container .time-value .new-values .bottom-value {
@@ -179,18 +252,103 @@ body {
           clip-path: inset(50% 0 0 0);
   -webkit-transform: rotateX(-180deg);
           transform: rotateX(-180deg);
-  background-color: darkgoldenrod;
+}
+
+.timer-container .time-value .upper-value,
+.timer-container .time-value .next-number {
+  background-color: #2c2c44;
+}
+
+.timer-container .time-value .bottom-value,
+.timer-container .time-value .current-number {
+  background-color: #343650;
 }
 
 .timer-container .time-value.flip .new-values {
   -webkit-transform: rotateX(-180deg);
           transform: rotateX(-180deg);
-  -webkit-transition: 600ms all;
-  transition: 600ms all;
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
 }
 
-.timer-container .time-type {
+.social-media {
+  position: absolute;
+  bottom: 8.9%;
   width: 100%;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+
+.social-media i {
+  color: #8486a9;
+  cursor: pointer;
+  font-size: 27px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.social-media i:hover {
+  color: #fb6087;
+}
+
+@media (max-width: 1000px) {
+  .background .textures {
+    overflow: hidden;
+    background: url(../images/bg-stars.svg), url(../images/pattern-hills.svg) no-repeat bottom right 15%;
+  }
+  .background .textures img {
+    visibility: hidden;
+  }
+  .ui.container {
+    width: 100% !important;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 10px;
+  }
+  .ui.container .page-header {
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    text-align: center;
+    letter-spacing: 7px;
+    margin: 141px 0 57px;
+  }
+  .timer-container {
+    width: clamp(80%, 500px, 92%);
+    height: 90px;
+    gap: 5px;
+  }
+  .timer-container .timer-items {
+    width: 21.5%;
+  }
+  .timer-container .time-value {
+    height: 80px;
+    border-width: 5px;
+  }
+  .timer-container .time-value::after, .timer-container .time-value::before {
+    border-width: 3px;
+  }
+  .timer-container .time-value .next-number,
+  .timer-container .time-value .new-values .upper-value,
+  .timer-container .time-value .new-values .bottom-value,
+  .timer-container .time-value .current-number {
+    font-size: 40px;
+    border-radius: 5px;
+  }
+  .timer-container .time-type {
+    font-size: 8px;
+    letter-spacing: 2.4px;
+  }
+  .social-media {
+    bottom: 7%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
