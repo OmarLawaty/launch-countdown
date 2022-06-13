@@ -1,4 +1,14 @@
-const date = new Date('june 30, 2022 2:16:00').getTime();
+const getFirstDayOfNextMonth = () => {
+  const date = new Date();
+
+  return new Date(date.getFullYear(), date.getMonth() + 1, 1);
+};
+
+const updateDate = () => {
+  const date = new Date(getFirstDayOfNextMonth()).getTime();
+
+  return date;
+};
 
 const timeTypes = [
   {
@@ -58,7 +68,7 @@ countdownContainer.appendChild(fragment);
 
 const updateTimer = setInterval(() => {
   const now = new Date().getTime();
-  let timeLeft = date - now;
+  let timeLeft = updateDate() - now;
 
   timeTypes.forEach(({ element, updateTo, updateFrom }) => {
     element = element.children[0].children[1];
@@ -69,11 +79,6 @@ const updateTimer = setInterval(() => {
 
     setTimeout(() => appendTextToElement(element, updateTo(timeLeft), updateTo(timeLeft - updateFrom(1))), 500);
   });
-
-  if (timeLeft <= 0) {
-    clearInterval(updateTimer);
-    timeTypes.forEach(({ element, value }) => appendTextToElement(element.children[0], value, value));
-  }
 }, 1000);
 
 const appendTextToElement = (element, text, nextValue) => {
